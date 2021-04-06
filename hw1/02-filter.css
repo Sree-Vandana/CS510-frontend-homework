@@ -1,1 +1,51 @@
-/* Add your code here */
+/*
+Applying filter for each Image Figure
+*/
+#Grayscale img{
+  filter: grayscale(100%);
+}
+
+#Blur img{
+  filter: blur(3px);
+}
+
+#Invert img{
+  filter: invert(75%);
+}
+
+#Brightness img{
+  filter: brightness(0.4);
+}
+
+#Saturation img{
+  filter: saturate(300%);
+}
+
+#Sepia img{
+  filter: sepia(100%);
+}
+
+#VariousFilters img{
+  filter: grayscale(100%) blur(3px);
+}
+
+/*
+Adjusting the Layout of the Images.
+*/
+figure{
+  display:inline-block;
+  /* display:float;
+  float:left; */
+}
+
+@media (max-width: 340px){
+  #full-h1{
+    display: none;
+  }
+}
+
+@media (min-width: 341px){
+  #mini-h1{
+    display: none;
+  }
+}
