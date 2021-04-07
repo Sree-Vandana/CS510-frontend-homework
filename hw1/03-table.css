@@ -2,5 +2,28 @@
     - teal
     - rgb alpha value of the color above
 */
+body{
+    font-size: small;
+}
 
-/* Add your code here */
+#table{
+    border-collapse: collapse;
+    border: 1px solid black;
+    margin:auto;
+    margin-top: 30px;
+}
+
+th.heading{
+    background-color: teal;
+    color: white;
+}
+
+.heading, .data{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 12px;
+}
+
+.row:hover{
+    background-color: rgba(0,128,128, 0.2);
+}
