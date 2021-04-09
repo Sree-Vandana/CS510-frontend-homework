@@ -31,21 +31,11 @@ Applying filter for each Image Figure
 
 /*
 Adjusting the Layout of the Images.
+Practicing responsiveness and box-model properties.
 */
+
 figure{
   display:inline-block;
   /* display:float;
   float:left; */
-}
-
-@media (max-width: 340px){
-  #full-h1{
-    display: none;
-  }
-}
-
-@media (min-width: 341px){
-  #mini-h1{
-    display: none;
-  }
 }
