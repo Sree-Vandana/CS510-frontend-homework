@@ -47,8 +47,21 @@ a:hover{
   }
 }
 
-
 /* Code for exercise 03-flex */
+.flex-container{
+  height: 260px;
+  width: 750px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-end;
+  align-content: space-between;
+}
+.item8{
+  order:-2;
+}
+.item5{
+  order: -1;
+}
 
 /* Code for exercise 04-grid */
 
