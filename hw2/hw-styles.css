@@ -1,4 +1,52 @@
 /* Code for exercise 02-navbar */
+.nav-body{
+  margin: 0px;
+}
+nav{
+  background: linear-gradient(90deg, teal, black);
+}
+ul{
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+a:link, a:visited{
+  text-decoration: none;
+  color: white;
+}
+a:focus{
+  background-color: rgba(0, 128, 128, 0.8);
+}
+a:active{
+  color: black;
+}
+a:hover{
+  background-color: rgba(102, 192, 192, 0.8);
+}
+
+@media (max-width: 389px){
+  li a{
+    display: block;
+    color: white;
+    padding: 5px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 390px){
+  nav{
+    display: flex;
+    justify-content: center;
+  }
+  ul{
+    display: flex;
+    justify-content: space-evenly;
+  }
+  li, li a{
+    padding: 10px 15px 10px 15px;
+  }
+}
+
 
 /* Code for exercise 03-flex */
 
