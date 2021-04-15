@@ -115,5 +115,64 @@ a:hover{
 }
 
 /* Code for exercise 05-calendar */
+div{
+  text-align: center;
+  font-weight: bold;
+}
+.grid-container-1{
+  height: 600px;
+  width:100%;
+  display: grid;
+  gap: 5px;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 50px 20px auto auto auto auto auto;
+}
+.cal-month{
+  grid-column: span 7;
+}
+.cal-day, .empty-day{
+  padding: 20px;
+  padding-top: 40px;
+  background-color: gainsboro;
+  border: 1px solid rgba(220, 220, 220, 1.5);
+}
+.single{
+  padding-left: 25px;
+  padding-right: 25px;
+}
+.empty-day{
+  padding: 31px;
+  background-color: white;
+}
+.month{
+  padding-top: 10px;
+  background-color: black;
+  color: white;
+}
+div.cal-day:hover{
+  background-color: rgb(143, 142, 142);
+  color: white;
+}
+
+@media (min-width: 531px) and (max-width: 768px){
+  .grid-container-1{
+    height: 500px;
+    gap: 10px;
+  }
+  .cal-day{
+    padding-top: 30px;
+  }
+}
+
+@media (max-width: 529px){
+  .grid-container-1{
+    height: 500px;
+    gap: 15px;
+    width:100%;
+  }
+  .cal-day{
+    padding-top: 20px;
+  }
+}
 
 /* Code for exercise 06-bootstrap-grid */
