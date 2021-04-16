@@ -115,7 +115,7 @@ a:hover{
 }
 
 /* Code for exercise 05-calendar */
-div{
+div.cal-month, div.cal-week, div.cal-day{
   text-align: center;
   font-weight: bold;
 }
@@ -126,22 +126,18 @@ div{
   gap: 5px;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: 50px 20px auto auto auto auto auto;
+  padding: 80px;
+  padding-top:0px;
 }
 .cal-month{
   grid-column: span 7;
 }
-.cal-day, .empty-day{
-  padding: 20px;
-  padding-top: 40px;
+div.cal-day, div.empty-day{
+  padding-top: 30px;
   background-color: gainsboro;
   border: 1px solid rgba(220, 220, 220, 1.5);
 }
-.single{
-  padding-left: 25px;
-  padding-right: 25px;
-}
-.empty-day{
-  padding: 31px;
+div.empty-day{
   background-color: white;
 }
 .month{
@@ -150,29 +146,45 @@ div{
   color: white;
 }
 div.cal-day:hover{
-  background-color: rgb(143, 142, 142);
-  color: white;
+  background-color: rgb(160, 159, 159);
 }
 
-@media (min-width: 531px) and (max-width: 768px){
+@media(max-width: 414px){
   .grid-container-1{
-    height: 500px;
-    gap: 10px;
+    padding: 0px;
+    height: 300px;
   }
-  .cal-day{
-    padding-top: 30px;
+  div.cal-day, div.empty-day{
+    padding-top:10px;
   }
 }
-
-@media (max-width: 529px){
+@media(min-width: 415px) and (max-width: 768px){
   .grid-container-1{
+    padding: 20px;
+    padding-top: 0px;
     height: 500px;
-    gap: 15px;
-    width:100%;
   }
-  .cal-day{
-    padding-top: 20px;
+  div.cal-day, div.empty-day{
+    padding-top:20px;
   }
 }
 
 /* Code for exercise 06-bootstrap-grid */
+.row > *{
+  height: 80px;
+  border: 1px solid white;
+}
+.purple{
+  background-color: var(--purple);
+}
+div.col-sm-4.navy{
+  background-color: var(--navy);
+  width:50%;
+}
+div.col-2.teal{
+  background-color: var(--lightteal );
+}
+div.col-sm-4.green{
+  background-color: var(--green);
+  width: 25%;
+}
