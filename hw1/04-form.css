@@ -39,9 +39,9 @@ h1{
   margin-top: 2px;
 }
 
-input:invalid:focus{
+/* input:required:invalid::after{
   outline: 1.5px auto red;
-}
+} */
 
 fieldset, fieldset > legend{
   border:0;
