@@ -8,7 +8,7 @@ function submitURL(){
 
   let ele = document.getElementById("comments").value.trim();
   let sub_ele_index = ele.indexOf("?");
-  let url_regex = /^((http|https):\/\/(www\.))[a-zA-Z0-9-@:]+\.[a-zA-Z0-9\/\_\-]+\.?[a-zA-Z0-9]*/;
+  let url_regex = /^((http|https):\/\/(www\.))[a-zA-Z0-9-@:\/\_]+\.[a-zA-Z0-9\/\_\-]+\.?[a-zA-Z0-9]*/;
   let href_str = "";
   let param_str = "";
   let p=1;
@@ -22,7 +22,7 @@ function submitURL(){
 
   else{                                         // if ? and param are there
     href_str = ele.substring(0, sub_ele_index);
-    param_str = ele.substring(sub_ele_index+1, ele.length);
+    param_str = decodeURIComponent(ele.substring(sub_ele_index+1, ele.length));
     p=0;
   }
 
@@ -34,27 +34,9 @@ function submitURL(){
     createElement(href_str);
   
   if(param_str && u){                           // if query parameters are present + valid url
-    // var para_my_fn = search_param(param_str);
-    // console.log(para_my_fn);
-    // const urlParams = new URLSearchParams(param_str);
-    // console.log(typeof urlParams);
-    // entries = urlParams.entries();
-    // console.log(typeof entries);
-    // param_arr = []
+    
     p_values = search_param(param_str);
-    // for(let entry of entries) {
-    //   if(entry[1].length == 0){
-    //     param_arr.push(entry[0]);
-    //   }
-    //   p_values.push(`${entry[0]}: ${entry[1]}`);
-    // }
 
-    // if(param_arr.length != 0)                     // if incomplete parameter values
-    //   window.alert(`value missing for "${param_arr}". Please enetr complete valid URL.`);
-    // else{                                         // every thing ok with param
-    //   createElement(href_str);
-    //   createElement_para(p_values);
-    // }
     if(p_values){
       createElement(href_str);
       createElement_para(p_values);
