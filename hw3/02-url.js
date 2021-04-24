@@ -34,26 +34,70 @@ function submitURL(){
     createElement(href_str);
   
   if(param_str && u){                           // if query parameters are present + valid url
-    const urlParams = new URLSearchParams(param_str);
-    entries = urlParams.entries();
-    param_arr = []
-    p_values = []
-    for(let entry of entries) {
-      if(entry[1].length == 0){
-        param_arr.push(entry[0]);
-      }
-      p_values.push(`${entry[0]}: ${entry[1]}`);
-    }
+    // var para_my_fn = search_param(param_str);
+    // console.log(para_my_fn);
+    // const urlParams = new URLSearchParams(param_str);
+    // console.log(typeof urlParams);
+    // entries = urlParams.entries();
+    // console.log(typeof entries);
+    // param_arr = []
+    p_values = search_param(param_str);
+    // for(let entry of entries) {
+    //   if(entry[1].length == 0){
+    //     param_arr.push(entry[0]);
+    //   }
+    //   p_values.push(`${entry[0]}: ${entry[1]}`);
+    // }
 
-    if(param_arr.length != 0)                     // if incomplete parameter values
-      window.alert(`value missing for "${param_arr}". Please enetr complete valid URL.`);
-    else{                                         // every thing ok with param
+    // if(param_arr.length != 0)                     // if incomplete parameter values
+    //   window.alert(`value missing for "${param_arr}". Please enetr complete valid URL.`);
+    // else{                                         // every thing ok with param
+    //   createElement(href_str);
+    //   createElement_para(p_values);
+    // }
+    if(p_values){
       createElement(href_str);
       createElement_para(p_values);
+    }
+    else{
+      document.getElementById("result").style.visibility = "hidden";
     }
     
   }
   return false;
+}
+
+function search_param(param_str){
+  var p_value = [];
+  var param_arr=[];
+  var param_obj = new Object();
+  var all_para_arr = param_str.split('&');
+  
+  for(let i=0; i<all_para_arr.length; i++){
+    let one_para = all_para_arr[i].split("=");
+    param_obj[one_para[0]] = one_para[1];
+  }
+
+  for(let entry of Object.keys(param_obj)) {
+    if(typeof param_obj[entry] == "undefined" || param_obj[entry].length == 0){
+      param_arr.push(entry);
+    }
+    p_value.push(`${entry} : ${param_obj[entry]}`);
+  }
+  
+  if(param_arr.length != 0)  {                   // if incomplete parameter values
+    
+    if(param_arr.includes("")){
+      window.alert(`seems like something is missing. Please enetr complete and valid URL.`)
+    }
+    else{
+      window.alert(`value missing for "${param_arr}". Please enetr complete valid URL.`);
+    }
+  }
+  else{                                         // every thing ok with param
+      return p_value;
+    }
+  return 0;
 }
 
 function createElement(href_str){
