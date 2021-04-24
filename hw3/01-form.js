@@ -1,4 +1,5 @@
 function displayOnConsole(){
+
   var inputs = document.getElementById("form").elements;
 
 console.group("========= Form Submission =========");
@@ -10,7 +11,7 @@ console.group("========= Form Submission =========");
   console.log("Class Registration: "+ document.getElementById("reg-status").value);
 
   let class_sec = inputs["class-section"].value;
-  class_sec ? console.log("Class Section: " + class_sec) : console.log("Class Section: no section");
+  class_sec ? console.log("Class Section: " + class_sec) : console.log("Class Section: no selection");
 
   let arr = [];
   let check_ele = document.getElementsByName("other_course");

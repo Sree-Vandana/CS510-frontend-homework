@@ -9,37 +9,31 @@ function submitURL(){
   let ele = document.getElementById("comments").value.trim();
   let sub_ele_index = ele.indexOf("?");
   let url_regex = /^((http|https):\/\/(www\.))[a-zA-Z0-9-@:]+\.[a-zA-Z0-9\/\_\-]+\.?[a-zA-Z0-9]*/;
-  let href_str = ""
-  let param_str = ""
+  let href_str = "";
+  let param_str = "";
+  let p=1;
+  let u=1;
 
-  // if no ? or no para after 
-  if(sub_ele_index == -1 ){  
+  if(sub_ele_index == -1 )                      // if no ? 
     href_str = ele;
-  }
 
-  else if(sub_ele_index == ele.length-1){
+  else if(sub_ele_index == ele.length-1)        // if ? and no para after
     href_str = ele.substring(0, sub_ele_index);
-  }
 
-  // if ? and param are there
-  else{  
+  else{                                         // if ? and param are there
     href_str = ele.substring(0, sub_ele_index);
     param_str = ele.substring(sub_ele_index+1, ele.length);
+    p=0;
   }
 
-  // if href url did not match regex
-  if(!url_regex.test(href_str)){  
+  if(! url_regex.test(href_str)){                // if href url did not match regex
     window.alert("Enter valid URL");
+    u=0;
   }
-  else{// if valid href
-    console.log("href = "+ href_str);
-    //create div
+  else if(p)                                    // if valid href
     createElement(href_str);
-  }
   
-  if(param_str){     
-    console.log("yes param are there");
-
+  if(param_str && u){                           // if query parameters are present + valid url
     const urlParams = new URLSearchParams(param_str);
     entries = urlParams.entries();
     param_arr = []
@@ -51,17 +45,14 @@ function submitURL(){
       p_values.push(`${entry[0]}: ${entry[1]}`);
     }
 
-    // if missing parameter values
-    if(param_arr.length != 0)  
+    if(param_arr.length != 0)                     // if incomplete parameter values
       window.alert(`value missing for "${param_arr}". Please enetr complete valid URL.`);
-    else{ // every thing ok with param
+    else{                                         // every thing ok with param
+      createElement(href_str);
       createElement_para(p_values);
-      for(val in p_values)
-        console.log(p_values[val]);
     }
     
   }
-  
   return false;
 }
 
