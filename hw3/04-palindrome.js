@@ -7,8 +7,8 @@ function updateValue(e) {
   var input_val = input.value;
   var deci_point = (input_val - Math.floor(input_val)) !== 0;
   
-  if(typeof input_val[input_val.length-1] === "undefined" || parseInt(input_val)<0 || deci_point){
-    result.innerHTML = "Please enter valid positive number";
+  if(typeof input_val[input_val.length-1] === "undefined" || parseInt(input_val)<=0 || deci_point){
+    result.innerHTML = "Please enter valid positive number (>0)";
   }
   else if(isPalindrom(input_val))
     result.innerHTML = `<span style="color:green;">Yes, This is a palindrome!</span>`;
