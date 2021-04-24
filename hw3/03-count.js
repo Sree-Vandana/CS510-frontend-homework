@@ -6,7 +6,7 @@ function highlight(ele) {
     var highlight_val = ele.value;
 
     let data = original_data;
-    let highlight_regex = new RegExp(highlight_val, "ig");
+    let highlight_regex = new RegExp("\\b" + highlight_val + "\\b", "ig");
 
     let result = data.replace(highlight_regex, (match) => {
       return `<span style="background-color:yellow;">${match}</span>`;
