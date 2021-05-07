@@ -3,29 +3,26 @@ let url = 'https://thronesapi.com/api/v2/Characters';
 
 let result = document.getElementById("results");
 
+let imgCount = 1;
+
 let addToDom = (element) => {
-  result.setAttribute("style", "display: flex;flex-wrap:wrap;")
 
   let div_ele = document.createElement("div");
   div_ele.setAttribute("class", "card-char");
-  div_ele.setAttribute("style", "display:inline-block;padding:10px;")
-  
 
   let img_ele = document.createElement("img");
   img_ele.setAttribute("class", "card-img");
   img_ele.setAttribute("src", element.imageUrl);
-  img_ele.setAttribute("style", "height:250px;width:250px;padding:3px;padding-bottom:10px;");
-  // img_ele.setAttribute("width", "250px");
-  // img_ele.setAttribute("height", "250px");
-  // img_ele.setAttribute("class", "img-fluid img-thumbnail");
+  img_ele.setAttribute("alt", "charecter-"+imgCount);
+  img_ele.setAttribute("style", "height:250px;width:250px;padding:10px;padding-bottom:10px;");
   div_ele.appendChild(img_ele);
 
   let div_ele2 = document.createElement("div");
   div_ele2.setAttribute("class", "card-info");
   div_ele.appendChild(div_ele2);
-  div_ele2.setAttribute("style", "text-align:center;width:250px")
+  div_ele2.setAttribute("style", "text-align:center;width:250px;")
 
-  let h4_ele = document.createElement("h4");
+  let h4_ele = document.createElement("h3");
   h4_ele.textContent = element.fullName;
   div_ele2.appendChild(h4_ele);
 
@@ -34,16 +31,13 @@ let addToDom = (element) => {
   div_ele2.appendChild(p_ele);
 
   result.appendChild(div_ele)
-
+  imgCount++;
 }
 
 fetch(url)
   .then((res) => res.json())
   .then((data) => {
-    // console.log(data);
-    // image; fullname; title
     data.forEach(element => {
-      console.log(element);
       addToDom(element);
     });
   })

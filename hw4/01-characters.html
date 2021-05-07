@@ -11,22 +11,28 @@
     />
     <link rel="stylesheet" href="../styles.css" />
     <script defer src="01-characters.js"></script>
+
     <style>
       h1 {
         text-align: center;
         font-weight: bold;
+        color:black;
       }
-    
-      /* .card-char {
-                    margin: auto;
-                  } */
-      /*use media query to set margin in big scren and no margin in samll screens...*/
-    
+      #results{
+        display: flex;
+        flex-wrap:wrap;
+        justify-content: center;
+      }
+      div.card-char{
+        color:black;
+        /* font-weight: bold; */
+      }
       div.card-char:hover {
         background-color: black;
         color: white;
       }
     </style>
+    
   </head>
   <body class="bg-info">
     <main>
