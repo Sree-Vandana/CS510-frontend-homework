@@ -26,3 +26,61 @@ let borderColors = [
 
 // URL to Game of Thrones API to fetch all characters
 let url = 'https://thronesapi.com/api/v2/Characters';
+
+fetch(url)
+  .then((res) => res.json())
+  .then((data) => {
+    donutGraph(data);
+  })
+  .catch((error) => {
+      console.log(error);
+  });
+
+
+function donutGraph(data) {
+
+  let arr = [];
+  data.forEach(element => {
+
+    let nam = element.family;
+    if(nam == "" || nam == "None" || nam == "Unknown"){
+      nam = "None";
+    }
+    else if(nam.indexOf("House") < 0){
+      nam = "House " + nam;
+    }
+    if(nam != "House Free Folk") arr.push(nam)
+  });
+
+  let familyNames = arr.reduce((accu, curr) => {
+    accu.hasOwnProperty(curr)
+      ? accu[curr]++
+      : (accu[curr] = 1);
+    return accu;
+  }, {});
+
+  let familyLabels = [];
+  let familyCount = [];
+  for (const property in familyNames) {
+    if (familyNames[property] >= 2) {
+      familyLabels.push(property);
+      familyCount.push(familyNames[property]);
+    }
+  }
+
+  var ctx = document.getElementById('myChart').getContext('2d');
+
+  var myChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: familyLabels,
+        datasets: [{
+                      data: familyCount,
+                      backgroundColor: backgroundColors,
+                      borderColor: borderColors,
+                }],
+      },
+  });
+
+}
+
