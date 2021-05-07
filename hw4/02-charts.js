@@ -27,15 +27,17 @@ let borderColors = [
 // URL to Game of Thrones API to fetch all characters
 let url = 'https://thronesapi.com/api/v2/Characters';
 
-fetch(url)
-  .then((res) => res.json())
-  .then((data) => {
+async function getData () {
+  try{
+    let res = await fetch(url);
+    let data = await res.json();
     donutGraph(data);
-  })
-  .catch((error) => {
-      console.log(error);
-  });
+  } catch (error) {
+    console.log(error);
+  }
+}
 
+getData();
 
 function donutGraph(data) {
 
@@ -80,6 +82,12 @@ function donutGraph(data) {
                       borderColor: borderColors,
                 }],
       },
+     options: {
+    legend: {
+      display: true,
+      position: 'bottom',
+    },
+  }
   });
 
 }
