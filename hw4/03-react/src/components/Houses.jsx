@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Doughnut } from "react-chartjs-2";
-import "../App.css";
 
 class Houses extends Component {
   constructor(props) {

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import Result from "./Result";
 import NoResult from "./NoResult";
-import "bootstrap/dist/css/bootstrap.css";
 import "../App.css";
 
 class Search extends Component {

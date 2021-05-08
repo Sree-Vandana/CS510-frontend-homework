@@ -18,7 +18,6 @@ button.search-btn{
 }
 }
 
-
 /* houses css */
 
 .a-link{
@@ -33,6 +32,17 @@ button.search-btn{
   padding: 10px 10px;
 }
 
+@media (min-width:990px){
+div.houses-container{
+  max-width: 720px  !important;
+}
+div.houses-container > canvas{
+  height:688px  !important;
+  width:688px   !important;
+}
+}
+
+
 /* navbar css */
 
 nav-p{
@@ -40,12 +50,13 @@ nav-p{
 }
 
 /* home page css */
+
 div.welcome-msg{
   padding-top: 50px;
 }
 
-
 /* css for result pic */
+
 img.img-pic{
   width:250px;
   height:250px;

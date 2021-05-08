@@ -1,10 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.css";
 import Home from "./Home";
 import Search from "./Search";
 import Houses from "./Houses";
-import "../App.css";
 
 export default function NavBar() {
   return (
