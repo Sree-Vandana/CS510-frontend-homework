@@ -1,14 +1,25 @@
 import React, { Component } from "react";
+import axios from "axios";
 import { Doughnut } from "react-chartjs-2";
+import "../App.css";
 
 class Houses extends Component {
   constructor(props) {
     super(props);
+
+    this.options = {
+      legend: {
+        display: true,
+        position: "bottom",
+      },
+    };
+
     this.state = {
+      maintainAspectRatio: false,
+      responsive: false,
       labels: [],
       datasets: [
         {
-          label: "Game of thrones Houses",
           backgroundColor: [
             "rgba(54, 162, 235, 0.8)",
             "rgba(255, 206, 86, 0.8)",
@@ -21,7 +32,7 @@ class Houses extends Component {
             "rgba(40, 159, 64, 0.8)",
             "rgba(210, 199, 199, 0.8)",
           ],
-          borderColors: [
+          borderColor: [
             "rgba(54, 162, 235, 1)",
             "rgba(255, 206, 86, 1)",
             "rgba(255, 99, 132, 1)",
@@ -74,9 +85,10 @@ class Houses extends Component {
 
   componentDidMount() {
     let url = "https://thronesapi.com/api/v2/Characters";
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
+    axios
+      .get(url)
+      .then((res) => {
+        let data = res.data;
         this.donutGraph(data);
       })
       .catch((error) => {
@@ -86,23 +98,11 @@ class Houses extends Component {
 
   render() {
     return (
-      <div className="bg-info">
-        <h1 className="h1 my-4">Exercise 02 - Charts</h1>
-        <Doughnut
-          className="container border rounded bg-light w-75 mt-5"
-          data={this.state}
-          options={{
-            title: {
-              display: true,
-              text: "Average Rainfall per month",
-              fontSize: 20,
-            },
-            legend: {
-              display: true,
-              position: "right",
-            },
-          }}
-        />
+      <div>
+        <h2 className="m-2 text-center">Charecters Houses</h2>
+        <div className="container-md border rounded bg-light houses-container">
+          <Doughnut data={this.state} options={this.options} width={"30%"} />
+        </div>
       </div>
     );
   }

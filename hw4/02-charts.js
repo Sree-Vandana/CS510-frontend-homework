@@ -83,10 +83,10 @@ function donutGraph(data) {
                 }],
       },
      options: {
-    legend: {
-      display: true,
-      position: 'bottom',
-    },
+      legend: {
+        display: true,
+        position: 'bottom',
+      },
   }
   });
 

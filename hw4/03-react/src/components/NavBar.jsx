@@ -4,35 +4,38 @@ import "bootstrap/dist/css/bootstrap.css";
 import Home from "./Home";
 import Search from "./Search";
 import Houses from "./Houses";
+import "../App.css";
 
 export default function NavBar() {
   return (
     <Router>
       <div>
-        <nav className="navbar navbar-dark bg-dark">
-          <a href="/" className="navbar-brand">
-            Exercise 03
-          </a>
+        <nav className="navbar navbar-dark bg-dark nav-class">
+          <p className="navbar-brand nav-p">Game of Thrones</p>
 
           <div>
             <ul className="navbar">
               <li className="nav-link">
-                <Link to="/">Home</Link>
+                <Link className="a-link" to="/">
+                  Home
+                </Link>
               </li>
 
               <li className="nav-link ">
-                <Link to="/search">Search</Link>
+                <Link className="a-link" to="/search">
+                  Search
+                </Link>
               </li>
 
               <li className="nav-link ">
-                <Link to="/houses">Houses</Link>
+                <Link className="a-link" to="/houses">
+                  Houses
+                </Link>
               </li>
             </ul>
           </div>
         </nav>
 
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/search">
             <Search />
